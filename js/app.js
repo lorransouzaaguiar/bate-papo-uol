@@ -3,15 +3,13 @@ const URLBASE = 'https://mock-api.driven.com.br/api/v6/uol'
 
 const repo = () => {
     const getMessages = async () => {
-        const response = await axios.get(`${URLBASE}/messages`)
-        return response.data
+        return axios.get(`${URLBASE}/messages`)
     }
 
     const createUser = async (name) => {
-        const response = await axios.post(`${URLBASE}/participants`, {
+        return axios.post(`${URLBASE}/participants`, {
             name
         })
-        return response.data
     }
 
     return { getMessages, createUser }
@@ -28,7 +26,9 @@ const getColorByTypeValue = (type) => ({
 
 const renderMessages = async () => {
     const messageList = document.createElement('ul')
-    const msgs = await repo().getMessages()
+    const reponse = await repo().getMessages()
+    const msgs = reponse.data
+    console.log(msgs)
 
     msgs.forEach((msg) => {
         const msgEl = document.createElement('li')
@@ -49,16 +49,32 @@ const renderMessages = async () => {
 (async function App() {
     const main = document.getElementById('main')
 
-    const inputName = prompt('Insira seu lindo nome!')
+    let isLogIn = false
 
-    await repo().createUser(inputName)
+    const login = () => {
+        const inputName = prompt('Insira seu lindo nome!')
+        repo()
+            .createUser(inputName)
+            .then(res => {
+                isLogIn = true
+            })
+            .catch(err => {
+                isLogIn = false
+            })
+            .finally(() => {
+                if (isLogIn) {
+                    renderMessages()
+                        .then(listEl => {
+                            main.appendChild(listEl)
+                        })
+                        .catch(console.log)
+                } else login()
+            })
+    }
+
+    login()
 
 
-    renderMessages().then(listEl => {
-        main.appendChild(listEl)
-
-        console.log(document.querySelector('ul'))
-    }).catch(console.log)
 
 })()
 
