@@ -1,8 +1,6 @@
 main {
     margin-top: 90px;
-    margin-bottom: 200px;
-    height: 2000px;
-    overflow-y: scroll;
+    margin-bottom: 90px;
 }
 
 .message {
@@ -15,16 +13,4 @@ main {
 .time {
     color: var(--g2);
     margin-right: 10px;
-}
-
-.message-LogIn-LogOut {
-    background-color: (--g1);
-}
-
-.message-regular {
-    background-color: (--w1);
-}
-
-.message-private {
-    background-color: 'red';
 }
