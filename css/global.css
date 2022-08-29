@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --w1: #FFFFFf;
+    --g1: #DCDCDC;
+    --g2: #AAAAAA;
+    --g3: #AEAEAE;
+    --g4: #696969;
+    --g5: #E7E7E7;
+    --g6: #505050;
+    --g7: #F3F3F3;
+    --r1: #FFDEDE;
+
+    --spacing1: 4px;
+    --spacing2: 12px;
+    --spacing3: 16px;
+    --spacing4: 18px;
+    --spacing5: 26px;
+
+    --fs1: 14px;
+    --fs2: 16px;
+    --fs3: 18px;
+
+}
+
+body {
+    background-color: var(--g7);
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    cursor: pointer;
+}

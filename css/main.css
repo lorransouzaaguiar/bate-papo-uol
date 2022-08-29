@@ -1,0 +1,30 @@
+main {
+    margin-top: 90px;
+    margin-bottom: 200px;
+    height: 2000px;
+    overflow-y: scroll;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+
+.time {
+    color: var(--g2);
+    margin-right: 10px;
+}
+
+.message-LogIn-LogOut {
+    background-color: (--g1);
+}
+
+.message-regular {
+    background-color: (--w1);
+}
+
+.message-private {
+    background-color: 'red';
+}
