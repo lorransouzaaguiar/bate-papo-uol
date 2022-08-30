@@ -1,4 +1,3 @@
-console.log('ola mundo')
 const URLBASE = 'https://mock-api.driven.com.br/api/v6/uol'
 
 const repo = () => {
@@ -28,7 +27,6 @@ const renderMessages = async () => {
     const messageList = document.createElement('ul')
     const reponse = await repo().getMessages()
     const msgs = reponse.data
-    console.log(msgs)
 
     msgs.forEach((msg) => {
         const msgEl = document.createElement('li')
@@ -43,7 +41,13 @@ const renderMessages = async () => {
         messageList.appendChild(msgEl)
 
     })
+
     return messageList
+}
+
+const showLastMessage = () => {
+    const lastItem = document.querySelector('li:last-child')
+    lastItem.scrollIntoView()
 }
 
 (async function App() {
@@ -51,7 +55,7 @@ const renderMessages = async () => {
 
     let isLogIn = false
 
-    const login = () => {
+    const login = (() => {
         const inputName = prompt('Insira seu lindo nome!')
         repo()
             .createUser(inputName)
@@ -66,13 +70,12 @@ const renderMessages = async () => {
                     renderMessages()
                         .then(listEl => {
                             main.appendChild(listEl)
+                            showLastMessage()
                         })
                         .catch(console.log)
                 } else login()
             })
-    }
-
-    login()
+    })()
 
 
 

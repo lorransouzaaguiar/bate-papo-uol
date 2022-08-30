@@ -1,6 +1,8 @@
 main {
-    margin-top: 90px;
-    margin-bottom: 90px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 .message {
